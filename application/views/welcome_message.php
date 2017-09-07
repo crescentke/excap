@@ -72,7 +72,7 @@ if(!empty($userData)){
 				<p><b>Name : </b>'.$userData['first_name'].' '.$userData['last_name'].'</p>
 				<p><b>Twitter Profile Link : </b><a href="'.$userData['profile_url'].'" target="_blank">'.$userData['profile_url'].'</a></p>
 				<p><b>You are login with : </b>Twitter</p>
-				<p><b>Logout from <a href="'.base_url().'user_authentication/logout">Twitter</a></b></p>';
+				<p><b>Logout from <a href="'.base_url().'index.php/welcome/logout">Log Out</a></b></p>';
 	//Latest tweets
 	if(!empty($tweets)){
 		$outputHTML .= '<div class="tweetList"><strong>Latest Tweets : </strong>
