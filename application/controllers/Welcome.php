@@ -16,7 +16,7 @@ class Welcome extends CI_Controller
 		//Twitter API Configuration
 		$consumerKey = 'p9FbZgXf5G74as6DPzq0A1jcI';
 		$consumerSecret = 'ww8FyzEbLTBzU5ICuPxhTgm89YN156qrN4wiwXxRXvvkW34nqw';
-		$oauthCallback = base_url().'welcome/';
+		$oauthCallback = base_url();
 
 		//Get existing token and token secret from session
 		$sessToken = $this->session->userdata('token');
