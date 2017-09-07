@@ -73,15 +73,6 @@ if(!empty($userData)){
 				<p><b>Twitter Profile Link : </b><a href="'.$userData['profile_url'].'" target="_blank">'.$userData['profile_url'].'</a></p>
 				<p><b>You are login with : </b>Twitter</p>
 				<p><b>Logout from <a href="'.base_url().'index.php/welcome/logout">Log Out</a></b></p>';
-	//Latest tweets
-	if(!empty($tweets)){
-		$outputHTML .= '<div class="tweetList"><strong>Latest Tweets : </strong>
-			<ul>';
-		foreach($tweets  as $tweet){
-			$outputHTML .= '<li>'.$tweet->text.' <br />-<i>'.$tweet->created_at.'</i></li>';
-		}
-		$outputHTML .= '</ul></div>';
-	}
 	$outputHTML .= '</div>
 		</div>';
 }else{
