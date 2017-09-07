@@ -85,7 +85,7 @@ if(!empty($userData)){
 	$outputHTML .= '</div>
 		</div>';
 }else{
-	$outputHTML = '<a href="'.$oauthURL.'"><img src="'.base_url().'assets/images/sign-in-with-twitter.png" alt=""/></a>';
+	$outputHTML = '<a href="'.$oauthURL.'">Twitter</a>';
 }
 ?>
 <?php echo $outputHTML; ?>
