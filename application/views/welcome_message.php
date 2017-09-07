@@ -51,8 +51,10 @@ color:#999999;
 }
 p.error{font-size: 16px;color: #EA4335;}
 </style>
+<link rel="stylesheet" href="<?= base_url('dist/css/bootstrap.min.css') ?>">
 </head>
-<body>
+<body class="text-center">
+	<h1>WiFi Login</h1>
 <?php
 if(!empty($error_msg)){
 	echo '<p class="error">'.$error_msg.'</p>';

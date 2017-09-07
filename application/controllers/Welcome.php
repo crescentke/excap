@@ -88,7 +88,7 @@ class Welcome extends CI_Controller
 				$twitterUrl = $connection->getAuthorizeURL($requestToken['oauth_token']);
 				$data['oauthURL'] = $twitterUrl;
 			}else{
-				$data['oauthURL'] = base_url().'welcome';
+				$data['oauthURL'] = base_url();
 				$data['error_msg'] = 'Error connecting to twitter! try again later!';
 			}
         }
