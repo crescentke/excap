@@ -65,7 +65,7 @@ if(!empty($error_msg)){
 if(!empty($userData)){
 	$outputHTML = '
 		<div class="wrapper">
-			<h1>Twitter Profile Details </h1>
+			<h4>User Profile Details </h4>
 			<div class="welcome_txt">Welcome <b>'.$userData['first_name'].'</b></div>
 			<div class="tw_box">
 				<p class="image"><img src="'.$userData['picture_url'].'" alt="" width="300" height="220"/></p>
