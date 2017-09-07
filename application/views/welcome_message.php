@@ -49,7 +49,7 @@ color:#999999;
 	list-style: none;
 	padding: 5px;
 }
-.btn-twitter{border-radius: 100px;
+.btn-twitter, .btn-twitter:focus, .btn-twitter:hover{border-radius: 100px;
     box-shadow: none;
     cursor: pointer;
     font-size: 14px;
