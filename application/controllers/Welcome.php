@@ -103,6 +103,6 @@ class Welcome extends CI_Controller
 		$this->session->unset_userdata('status');
 		$this->session->unset_userdata('userData');
         $this->session->sess_destroy();
-		redirect('/welcome');
+		redirect(base_url());
     }
 }
