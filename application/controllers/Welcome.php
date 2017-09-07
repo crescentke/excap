@@ -48,6 +48,7 @@ class Welcome extends CI_Controller
 				$userData = array(
 					'oauth_provider' => 'twitter',
 					'oauth_uid' => $userInfo->id,
+					'username' => $userInfo->screen_name,
 					'first_name' => $first_name,
 					'last_name' => $last_name,
 					'profile_url' => 'https://twitter.com/'.$userInfo->screen_name,
