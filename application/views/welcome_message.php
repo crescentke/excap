@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Login with Twitter in CodeIgniter by CodexWorld</title>
+<title>WiFi Login</title>
 <style type="text/css">
 h1{
 font-family:Arial, Helvetica, sans-serif;
