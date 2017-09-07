@@ -49,6 +49,20 @@ color:#999999;
 	list-style: none;
 	padding: 5px;
 }
+.btn-twitter{border-radius: 100px;
+    box-shadow: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+	background-color: #1da1f2;
+border: 1px solid #1da1f2;
+color: #fff;
+}
 p.error{font-size: 16px;color: #EA4335;}
 </style>
 <link rel="stylesheet" href="<?= base_url('dist/css/bootstrap.min.css') ?>">
@@ -76,7 +90,7 @@ if(!empty($userData)){
 	$outputHTML .= '</div>
 		</div>';
 }else{
-	$outputHTML = '<a href="'.$oauthURL.'">Twitter</a>';
+	$outputHTML = '<a class="btn-twitter" href="'.$oauthURL.'">Twitter</a>';
 }
 ?>
 <?php echo $outputHTML; ?>
