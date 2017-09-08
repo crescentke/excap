@@ -62,6 +62,22 @@ color:#999999;
 	background-color: #1da1f2;
 border: 1px solid #1da1f2;
 color: #fff;
+margin: 0 5px;
+}
+.btn-facebook, .btn-facebook:focus, .btn-facebook:hover{border-radius: 100px;
+    box-shadow: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+	background-color: #4267b2;
+border: 1px solid #4267b2;
+color: #fff;
+margin: 0 5px;
 }
 p.error{font-size: 16px;color: #EA4335;}
 </style>
@@ -90,7 +106,7 @@ if(!empty($userData)){
 	$outputHTML .= '</div>
 		</div>';
 }else{
-	$outputHTML = '<a class="btn-twitter" href="'.$oauthURL.'">Twitter</a><a href="'.$authUrlFB.'">Facebook</a>';
+	$outputHTML = '<a class="btn-twitter" href="'.$oauthURL.'">Twitter</a><a class="btn-facebook" href="'.$authUrlFB.'">Facebook</a>';
 }
 ?>
 <?php echo $outputHTML; ?>
