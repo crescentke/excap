@@ -1,46 +1,63 @@
-<?php
-class Oauth_Login extends CI_Controller {
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+class Oauth_Login extends CI_Controller
+{
+    function __construct() {
+		parent::__construct();
 
-public $user = "";
+		// Load facebook library
+		$this->load->library('facebook');
 
-public function __construct() {
-parent::__construct();
+		//Load user model
+		$this->load->model('user');
+    }
 
-// Load facebook library and pass associative array which contains appId and secret key
-$this->load->library('facebook', array('appId' => '131563190800109', 'secret' => '9651693092934b33dc130f5072d6adc0'));
+    public function index(){
+		$userData = array();
 
-// Get user's login information
-$this->user = $this->facebook->getUser();
+		// Check if user is logged in
+		if($this->facebook->is_authenticated()){
+			// Get user facebook profile details
+			$userProfile = $this->facebook->request('get', '/me?fields=id,first_name,last_name,email,picture');
+
+            // Preparing data for database insertion
+            $userData['oauth_provider'] = 'facebook';
+            $userData['oauth_uid'] = $userProfile['id'];
+            $userData['first_name'] = $userProfile['first_name'];
+            $userData['last_name'] = $userProfile['last_name'];
+            $userData['email'] = $userProfile['email'];
+            $userData['profile_url'] = 'https://www.facebook.com/'.$userProfile['id'];
+            $userData['picture_url'] = $userProfile['picture']['data']['url'];
+
+            // Insert or update user data
+            $userID = $this->user->checkUser($userData);
+
+			// Check user data insert or update status
+            if(!empty($userID)){
+                $data['userData'] = $userData;
+                $this->session->set_userdata('userData',$userData);
+            } else {
+               $data['userData'] = array();
+            }
+
+			// Get logout URL
+			$data['logoutUrl'] = $this->facebook->logout_url();
+		}else{
+            $fbuser = '';
+
+			// Get login URL
+            $data['authUrl'] =  $this->facebook->login_url();
+        }
+
+		// Load login & profile view
+        $this->load->view('welcome_message',$data);
+    }
+
+	public function logout() {
+		// Remove local Facebook session
+		$this->facebook->destroy_session();
+		// Remove user data from session
+		$this->session->unset_userdata('userData');
+		// Redirect to login page
+        redirect(base_url());
+    }
 }
-
-// Store user information and send to profile page
-public function index() {
-if ($this->user) {
-  $data['user_profile'] = $this->facebook->api('/me/');
-
-  // Get logout url of facebook
-  $data['logout_url'] = $this->facebook->getLogoutUrl(array('next' => base_url() . 'index.php/oauth_login/logout'));
-
-  // Send data to profile page
-  $this->load->view('profile', $data);
-} else {
-
-  // Store users facebook login url
-  $data['login_url'] = $this->facebook->getLoginUrl();
-  $data['oauthURL'] = base_url();
-  $this->load->view('welcome_message',$data);
-  }
-}
-
-// Logout from facebook
-public function logout() {
-
-// Destroy session
-session_destroy();
-
-// Redirect to baseurl
-redirect(base_url());
-}
-
-}
- ?>
