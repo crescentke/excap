@@ -92,7 +92,7 @@ if(!empty($error_msg)){
 ?>
 
 <?php
-if($userData['oauth_provider'] == 'twitter'){
+if(!empty($userData['oauth_provider']) && $userData['oauth_provider'] == 'twitter'){
 	$outputHTML = '
 		<div class="wrapper">
 			<h4>User Profile Details </h4>
@@ -104,7 +104,7 @@ if($userData['oauth_provider'] == 'twitter'){
 				<p><b>Logout from <a href="'.$logoutUrl.'">Log Out</a></b></p>';
 	$outputHTML .= '</div>
 		</div>';
-}elseif($userData['oauth_provider'] == 'facebook'){
+}elseif(!empty($userData['oauth_provider']) && $userData['oauth_provider'] == 'facebook'){
 	$outputHTML = '
 		<div class="wrapper">
 			<h4>User Profile Details </h4>
