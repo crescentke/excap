@@ -7,7 +7,7 @@ public function __construct() {
 parent::__construct();
 
 // Load facebook library and pass associative array which contains appId and secret key
-$this->load->library('facebook', array('appId' => '<Your Facebook appId>', 'secret' => '<Generated Secret Key>'));
+$this->load->library('facebook', array('appId' => '131563190800109', 'secret' => '9651693092934b33dc130f5072d6adc0'));
 
 // Get user's login information
 $this->user = $this->facebook->getUser();
