@@ -89,7 +89,7 @@ class Welcome extends CI_Controller
 				$twitterUrl = $connection->getAuthorizeURL($requestToken['oauth_token']);
 				$data['oauthURL'] = $twitterUrl;
 				if($this->facebook->is_authenticated()){
-					$data['authUrlFB'] =  base_url();
+					$data['authUrlFB'] =  $this->facebook->logout_url();
 				}else {
 					$data['authUrlFB'] =  $this->facebook->login_url();
 				}
