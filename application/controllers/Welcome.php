@@ -3,6 +3,8 @@ class Welcome extends CI_Controller
 {
     function __construct() {
 		parent::__construct();
+				// Load facebook library
+				$this->load->library('facebook');
 		//Load user model
 		$this->load->model('user');
     }
@@ -86,6 +88,11 @@ class Welcome extends CI_Controller
 				//redirect user to twitter
 				$twitterUrl = $connection->getAuthorizeURL($requestToken['oauth_token']);
 				$data['oauthURL'] = $twitterUrl;
+				if($this->facebook->is_authenticated()){
+					$data['authUrlFB'] =  base_url();
+				}else {
+					$data['authUrlFB'] =  $this->facebook->login_url();
+				}
 			}else{
 				$data['oauthURL'] = base_url();
 				$data['error_msg'] = 'Error connecting to twitter! try again later!';

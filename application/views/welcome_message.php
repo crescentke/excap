@@ -90,7 +90,7 @@ if(!empty($userData)){
 	$outputHTML .= '</div>
 		</div>';
 }else{
-	$outputHTML = '<a class="btn-twitter" href="'.$oauthURL.'">Twitter</a><a href="'.$oauthURL.'">Facebook</a>';
+	$outputHTML = '<a class="btn-twitter" href="'.$oauthURL.'">Twitter</a><a href="'.$authUrlFB.'">Facebook</a>';
 }
 ?>
 <?php echo $outputHTML; ?>
