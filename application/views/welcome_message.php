@@ -84,7 +84,7 @@ p.error{font-size: 16px;color: #EA4335;}
 <link rel="stylesheet" href="<?= base_url('dist/css/bootstrap.min.css') ?>">
 </head>
 <body class="text-center">
-	<h1>WiFi Login</h1>
+	<h3>WiFi Login</h3>
 <?php
 if(!empty($error_msg)){
 	echo '<p class="error">'.$error_msg.'</p>';
@@ -100,11 +100,12 @@ if(!empty($userData)){
 			<div class="tw_box">
 				<p class="image"><img src="'.$userData['picture_url'].'" alt="" width="300" height="220"/></p>
 				<p><b>Name : </b>'.$userData['first_name'].' '.$userData['last_name'].'</p>
-				<p><b>Twitter Profile Link : </b><a href="'.$userData['profile_url'].'" target="_blank">'.$userData['profile_url'].'</a></p>
-				<p><b>You are login with : </b>Twitter</p>
-				<p><b>Logout from <a href="'.base_url().'index.php/welcome/logout">Log Out</a></b></p>';
+				<p><b>Profile Link : </b><a href="'.$userData['profile_url'].'" target="_blank">'.$userData['profile_url'].'</a></p>
+				<p><b>Logout from <a href="'.$logoutUrl.'">Log Out</a></b></p>';
 	$outputHTML .= '</div>
 		</div>';
+}elseif (condition) {
+	# code...
 }else{
 	$outputHTML = '<a class="btn-twitter" href="'.$oauthURL.'">Twitter</a><a class="btn-facebook" href="'.$authUrlFB.'">Facebook</a>';
 }
