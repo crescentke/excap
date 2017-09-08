@@ -16,19 +16,20 @@ $this->user = $this->facebook->getUser();
 // Store user information and send to profile page
 public function index() {
 if ($this->user) {
-$data['user_profile'] = $this->facebook->api('/me/');
+  $data['user_profile'] = $this->facebook->api('/me/');
 
-// Get logout url of facebook
-$data['logout_url'] = $this->facebook->getLogoutUrl(array('next' => base_url() . 'index.php/oauth_login/logout'));
+  // Get logout url of facebook
+  $data['logout_url'] = $this->facebook->getLogoutUrl(array('next' => base_url() . 'index.php/oauth_login/logout'));
 
-// Send data to profile page
-$this->load->view('profile', $data);
+  // Send data to profile page
+  $this->load->view('profile', $data);
 } else {
 
-// Store users facebook login url
-$data['login_url'] = $this->facebook->getLoginUrl();
-$this->load->view('login', $data);
-}
+  // Store users facebook login url
+  $data['login_url'] = $this->facebook->getLoginUrl();
+  $data['oauthURL'] = base_url();
+  $this->load->view('welcome_message',$data);
+  }
 }
 
 // Logout from facebook
