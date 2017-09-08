@@ -101,7 +101,7 @@ if(!empty($userData['oauth_provider']) && $userData['oauth_provider'] == 'twitte
 				<p class="image"><img src="'.$userData['picture_url'].'" alt="" width="300" height="220"/></p>
 				<p><b>Name : </b>'.$userData['first_name'].' '.$userData['last_name'].'</p>
 				<p><b>Profile Link : </b><a href="'.$userData['profile_url'].'" target="_blank">'.$userData['profile_url'].'</a></p>
-				<p><b>Logout from <a href="'.$logoutUrl.'">Log Out</a></b></p>';
+				<p><b>Logout from <a href="'.base_url("index.php/welcome/logout").'">Log Out</a></b></p>';
 	$outputHTML .= '</div>
 		</div>';
 }elseif(!empty($userData['oauth_provider']) && $userData['oauth_provider'] == 'facebook'){

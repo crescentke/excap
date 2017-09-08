@@ -20,13 +20,14 @@ class Oauth_Login extends CI_Controller
 			$userProfile = $this->facebook->request('get', '/me?fields=id,first_name,last_name,email,picture');
 
             // Preparing data for database insertion
-            $userData['oauth_provider'] = 'facebook';
-            $userData['oauth_uid'] = $userProfile['id'];
-            $userData['first_name'] = $userProfile['first_name'];
-            $userData['last_name'] = $userProfile['last_name'];
-            $userData['email'] = $userProfile['email'];
-            $userData['profile_url'] = 'https://www.facebook.com/'.$userProfile['id'];
-            $userData['picture_url'] = $userProfile['picture']['data']['url'];
+            $userData = array(
+              'oauth_provider' => 'facebook',
+              'oauth_uid' => $userProfile['id'],
+              'first_name' => $userProfile['first_name'],
+              'last_name' => $userProfile['last_name'],
+              'email' => $userProfile['email'],
+              'profile_url' => 'https://www.facebook.com/'.$userProfile['id'],
+              'picture_url' => $userProfile['picture']['data']['url']);
 
             // Insert or update user data
             $userID = $this->user->checkUser($userData);
