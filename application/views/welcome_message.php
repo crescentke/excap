@@ -104,8 +104,6 @@ if(!empty($userData)){
 				<p><b>Logout from <a href="'.$logoutUrl.'">Log Out</a></b></p>';
 	$outputHTML .= '</div>
 		</div>';
-}elseif (condition) {
-	# code...
 }else{
 	$outputHTML = '<a class="btn-twitter" href="'.$oauthURL.'">Twitter</a><a class="btn-facebook" href="'.$authUrlFB.'">Facebook</a>';
 }
