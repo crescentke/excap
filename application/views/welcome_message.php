@@ -106,6 +106,15 @@ if(!empty($userData['oauth_provider']) && $userData['oauth_provider'] == 'twitte
 	$outputHTML .= '</div>
 		</div>';
 }elseif($this->facebook->is_authenticated()){
+	$userProfile = $this->facebook->request('get', '/me?fields=id,first_name,last_name,email,picture');
+	$userData = array(
+		'oauth_provider' => 'facebook',
+		'oauth_uid' => $userProfile['id'],
+		'first_name' => $userProfile['first_name'],
+		'last_name' => $userProfile['last_name'],
+		'email' => $userProfile['email'],
+		'profile_url' => 'https://www.facebook.com/'.$userProfile['id'],
+		'picture_url' => $userProfile['picture']['data']['url']);
 	$outputHTML = '
 		<div class="wrapper">
 			<h4>User Profile Details </h4>
