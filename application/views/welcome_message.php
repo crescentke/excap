@@ -92,6 +92,7 @@ if(!empty($error_msg)){
 ?>
 
 <?php
+$this->load->library('facebook');
 if(!empty($userData['oauth_provider']) && $userData['oauth_provider'] == 'twitter'){
 	$outputHTML = '
 		<div class="wrapper">
@@ -104,7 +105,7 @@ if(!empty($userData['oauth_provider']) && $userData['oauth_provider'] == 'twitte
 				<p><b>Logout from <a href="'.base_url("index.php/welcome/logout").'">Log Out</a></b></p>';
 	$outputHTML .= '</div>
 		</div>';
-}elseif(!empty($userData['oauth_provider']) && $userData['oauth_provider'] == 'facebook'){
+}elseif($this->facebook->is_authenticated()){
 	$outputHTML = '
 		<div class="wrapper">
 			<h4>User Profile Details </h4>
