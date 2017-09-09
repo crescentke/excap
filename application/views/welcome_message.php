@@ -115,6 +115,7 @@ if(!empty($userData['oauth_provider']) && $userData['oauth_provider'] == 'twitte
 		'email' => $userProfile['email'],
 		'profile_url' => 'https://www.facebook.com/'.$userProfile['id'],
 		'picture_url' => $userProfile['picture']['data']['url']);
+	$logoutUrl = $this->facebook->logout_url();
 	$outputHTML = '
 		<div class="wrapper">
 			<h4>User Profile Details </h4>
