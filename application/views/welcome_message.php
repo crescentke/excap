@@ -107,6 +107,8 @@ if(!empty($userData['oauth_provider']) && $userData['oauth_provider'] == 'twitte
 		</div>';
 }elseif($this->facebook->is_authenticated()){
 	$userProfile = $this->facebook->request('get', '/me?fields=id,first_name,last_name,email,picture');
+
+	header('Location: '. base_url('index.php/welcome/success'));
 	$userData = array(
 		'oauth_provider' => 'facebook',
 		'oauth_uid' => $userProfile['id'],
