@@ -35,8 +35,6 @@ class Welcome extends CI_Controller
 
 			//User info from session
 			$userData = $sessUserData;
-
-      header('Location: '. base_url('index.php/welcome/success'));
 		} elseif(isset($_REQUEST['oauth_token']) && $sessToken == $_REQUEST['oauth_token']){
 			//Successful response returns oauth_token, oauth_token_secret, user_id, and screen_name
 			$connection = new TwitterOAuth($consumerKey, $consumerSecret, $sessToken, $sessTokenSecret); //print_r($connection);die;
