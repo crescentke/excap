@@ -36,7 +36,7 @@ class Welcome extends CI_Controller
 			//User info from session
 			$userData = $sessUserData;
 
-      redirect('success');
+      header('Location: '. base_url('index.php/welcome/success'));
 		} elseif(isset($_REQUEST['oauth_token']) && $sessToken == $_REQUEST['oauth_token']){
 			//Successful response returns oauth_token, oauth_token_secret, user_id, and screen_name
 			$connection = new TwitterOAuth($consumerKey, $consumerSecret, $sessToken, $sessTokenSecret); //print_r($connection);die;
@@ -70,7 +70,7 @@ class Welcome extends CI_Controller
 				//Get latest tweets
 				$data['tweets'] = $connection->get('statuses/user_timeline', array('screen_name' => $userInfo->screen_name, 'count' => 5));
 
-        redirect('success');
+        header('Location: '. base_url('index.php/welcome/success'));
       }else{
 				$data['error_msg'] = 'Some problem occurred, please try again later!';
     		$data['userData'] = $userData;
@@ -99,7 +99,7 @@ class Welcome extends CI_Controller
     				}else {
     					$data['authUrlFB'] =  $this->facebook->login_url();
     				}
-            redirect('success');
+            header('Location: '. base_url('index.php/welcome/success'));
     			}else{
     				$data['oauthURL'] = base_url();
     				$data['error_msg'] = 'Error connecting to twitter! try again later!';
