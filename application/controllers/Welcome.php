@@ -97,6 +97,8 @@ class Welcome extends CI_Controller
     				}else {
     					$data['authUrlFB'] =  $this->facebook->login_url();
     				}
+            $data['userData'] = $userData;
+        		$this->load->view('welcome_message',$data);
             //header('Location: '. base_url('index.php/welcome/success'));
     			}else{
     				$data['oauthURL'] = base_url();
