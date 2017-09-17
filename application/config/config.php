@@ -18,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://139.162.133.122/excap';
+//$config['base_url'] = 'http://localhost/excap';
 
 /*
 |--------------------------------------------------------------------------

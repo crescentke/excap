@@ -67,40 +67,45 @@ class Welcome extends CI_Controller
 
 				//Get latest tweets
 				$data['tweets'] = $connection->get('statuses/user_timeline', array('screen_name' => $userInfo->screen_name, 'count' => 5));
-			}else{
+
+        redirect('success');
+      }else{
 				$data['error_msg'] = 'Some problem occurred, please try again later!';
+    		$data['userData'] = $userData;
+    		$this->load->view('welcome_message',$data);
 			}
 		}else{
-			//unset token and token secret from session
-			$this->session->unset_userdata('token');
-			$this->session->unset_userdata('token_secret');
+    			//unset token and token secret from session
+    			$this->session->unset_userdata('token');
+    			$this->session->unset_userdata('token_secret');
 
-			//Fresh authentication
-			$connection = new TwitterOAuth($consumerKey, $consumerSecret);
-			$requestToken = $connection->getRequestToken($oauthCallback);
+    			//Fresh authentication
+    			$connection = new TwitterOAuth($consumerKey, $consumerSecret);
+    			$requestToken = $connection->getRequestToken($oauthCallback);
 
-			//Received token info from twitter
-			$this->session->set_userdata('token',$requestToken['oauth_token']);
-			$this->session->set_userdata('token_secret',$requestToken['oauth_token_secret']);
+    			//Received token info from twitter
+    			$this->session->set_userdata('token',$requestToken['oauth_token']);
+    			$this->session->set_userdata('token_secret',$requestToken['oauth_token_secret']);
 
-			//Any value other than 200 is failure, so continue only if http code is 200
-			if($connection->http_code == '200'){
-				//redirect user to twitter
-				$twitterUrl = $connection->getAuthorizeURL($requestToken['oauth_token']);
-				$data['oauthURL'] = $twitterUrl;
-				if($this->facebook->is_authenticated()){
-					$data['authUrlFB'] =  $this->facebook->logout_url();
-				}else {
-					$data['authUrlFB'] =  $this->facebook->login_url();
-				}
-			}else{
-				$data['oauthURL'] = base_url();
-				$data['error_msg'] = 'Error connecting to twitter! try again later!';
-			}
+    			//Any value other than 200 is failure, so continue only if http code is 200
+    			if($connection->http_code == '200'){
+    				//redirect user to twitter
+    				$twitterUrl = $connection->getAuthorizeURL($requestToken['oauth_token']);
+    				$data['oauthURL'] = $twitterUrl;
+    				if($this->facebook->is_authenticated()){
+    					$data['authUrlFB'] =  $this->facebook->logout_url();
+    				}else {
+    					$data['authUrlFB'] =  $this->facebook->login_url();
+    				}
+
+            redirect('success');
+    			}else{
+    				$data['oauthURL'] = base_url();
+    				$data['error_msg'] = 'Error connecting to twitter! try again later!';
+        		$data['userData'] = $userData;
+        		$this->load->view('welcome_message',$data);
+    			}
         }
-
-		$data['userData'] = $userData;
-		$this->load->view('welcome_message',$data);
     }
 
 	public function logout() {
@@ -112,7 +117,7 @@ class Welcome extends CI_Controller
 		redirect(base_url());
     }
 
-		public function success() {
-			echo "Successfully logged in";
-	    }
+    public function success(){
+      $this->load->view('success');
+    }
 }
