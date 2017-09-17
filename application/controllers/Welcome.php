@@ -68,7 +68,7 @@ class Welcome extends CI_Controller
 				//Get latest tweets
 				$data['tweets'] = $connection->get('statuses/user_timeline', array('screen_name' => $userInfo->screen_name, 'count' => 5));
 
-        //header('Location: '. base_url('index.php/welcome/success'));
+        header('Location: '. base_url('index.php/welcome/success'));
       }else{
 				$data['error_msg'] = 'Some problem occurred, please try again later!';
     		$data['userData'] = $userData;
