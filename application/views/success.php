@@ -8,5 +8,6 @@
 <body class="text-center">
 	<h3>Welcome to WiFi</h3>
 	<p>Login Successful</p>
+	<a href="<?= base_url('index.php/welcome/logout') ?>">Log out</a>
 </body>
 </html>
