@@ -5,8 +5,8 @@ class Welcome extends CI_Controller
 		parent::__construct();
 				// Load facebook library
 				$this->load->library('facebook');
-		//Load user model
-		$this->load->model('user');
+    		//Load user model
+    		$this->load->model('user');
     }
 
     public function index(){
@@ -35,7 +35,9 @@ class Welcome extends CI_Controller
 
 			//User info from session
 			$userData = $sessUserData;
-		}elseif(isset($_REQUEST['oauth_token']) && $sessToken == $_REQUEST['oauth_token']){
+
+      redirect('success');
+		} elseif(isset($_REQUEST['oauth_token']) && $sessToken == $_REQUEST['oauth_token']){
 			//Successful response returns oauth_token, oauth_token_secret, user_id, and screen_name
 			$connection = new TwitterOAuth($consumerKey, $consumerSecret, $sessToken, $sessTokenSecret); //print_r($connection);die;
 			$accessToken = $connection->getAccessToken($_REQUEST['oauth_verifier']);
@@ -97,7 +99,6 @@ class Welcome extends CI_Controller
     				}else {
     					$data['authUrlFB'] =  $this->facebook->login_url();
     				}
-
             redirect('success');
     			}else{
     				$data['oauthURL'] = base_url();
@@ -105,8 +106,8 @@ class Welcome extends CI_Controller
         		$data['userData'] = $userData;
         		$this->load->view('welcome_message',$data);
     			}
-        }
     }
+}
 
 	public function logout() {
 		$this->session->unset_userdata('token');
