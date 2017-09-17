@@ -36,10 +36,8 @@ class Oauth_Login extends CI_Controller
             if(!empty($userID)){
                 $data['userData'] = $userData;
                 $this->session->set_userdata('userData',$userData);
-                header('Location: '. base_url('index.php/welcome/success'));
             } else {
                $data['userData'] = array();
-               $this->load->view('welcome_message',$data);
             }
 
 			// Get logout URL
@@ -52,8 +50,7 @@ class Oauth_Login extends CI_Controller
     }
 
 		// Load login & profile view
-    //$this->load->view('welcome_message',$data);
-    header('Location: '. base_url('index.php/welcome/success'));
+        $this->load->view('welcome_message',$data);
     }
 
 	public function logout() {
