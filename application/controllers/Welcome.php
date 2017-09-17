@@ -97,7 +97,7 @@ class Welcome extends CI_Controller
     				}else {
     					$data['authUrlFB'] =  $this->facebook->login_url();
     				}
-            header('Location: '. base_url('index.php/welcome/success'));
+            //header('Location: '. base_url('index.php/welcome/success'));
     			}else{
     				$data['oauthURL'] = base_url();
     				$data['error_msg'] = 'Error connecting to twitter! try again later!';
