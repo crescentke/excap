@@ -42,17 +42,16 @@ class Oauth_Login extends CI_Controller
 
 			// Get logout URL
 			$data['logoutUrl'] = $this->facebook->logout_url();
-
-      header('Location: '. base_url('index.php/welcome/success'));
 		}else{
         $fbuser = '';
 
 	       // Get login URL
         $data['authUrl'] =  $this->facebook->login_url();
-    		// Load login & profile view
-        $this->load->view('welcome_message',$data);
     }
 
+		// Load login & profile view
+    //$this->load->view('welcome_message',$data);
+    header('Location: '. base_url('index.php/welcome/success'));
     }
 
 	public function logout() {
