@@ -130,7 +130,7 @@ if(!empty($userData['oauth_provider']) && $userData['oauth_provider'] == 'twitte
 	$outputHTML .= '</div>
 		</div>';
 }else{
-	$outputHTML = '<a class="btn-twitter" href="'.$oauthURL.'">Twitter'.$_GET['continue_url'].'</a><a class="btn-facebook" href="'.$authUrlFB.'">Facebook</a>';
+	$outputHTML = '<a class="btn-twitter" href="'.$oauthURL.'">Twitter'.$_GET['user_continue_url'].'</a><a class="btn-facebook" href="'.$authUrlFB.'">Facebook</a>';
 }
 ?>
 <?php echo $outputHTML; ?>
