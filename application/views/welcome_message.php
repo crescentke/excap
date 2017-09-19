@@ -130,6 +130,7 @@ if(!empty($userData['oauth_provider']) && $userData['oauth_provider'] == 'twitte
 	$outputHTML .= '</div>
 		</div>';
 }else{
+	$outputHTML = $_GET['base_grant_url'];
 	$outputHTML = '<a class="btn-twitter" href="'.$oauthURL.'">Twitter</a><a class="btn-facebook" href="'.$authUrlFB.'">Facebook</a>';
 }
 ?>
